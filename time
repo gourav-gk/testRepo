@@ -1,0 +1,91 @@
+import json
+days = ['monday','tuesday','wednesday','thursday','friday']
+totalPeriod = 8
+semester = [1,3,5,7]
+faculty = ['A','B','C','D','E','F']
+consecutives = ['Games','Library','Lab']
+'''subjects = {
+        7:[{
+            "subject":"AI",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"ML",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"IS",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"CG",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"VE",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"AILAB",
+            "credit":1,
+            "tcpw":0
+        }],
+        5:[{
+            "subject":"OS",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"DBMS",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"WT",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"CG",
+            "credit":3,
+            "tcpw":0
+        },
+        {
+            "subject":"DC",
+            "credit":3,
+            "tcpw":0,
+        },
+        {
+            "subject":"OSLAB",
+            "credit":1,
+            "tcpw":0
+        }]
+    }'''
+
+
+
+def generatecourseduration(subjects):
+    total_classes = 40
+    for sem in subjects:
+        creditSum = sum(sub['credit'] for sub in subjects[sem])
+        for sub in subjects[sem]:
+            tcpw = (total_classes//creditSum)*sub['credit']
+            sub['tcpw'] = tcpw
+
+    with open("subjects.json", "w") as outfile:
+        json.dump(subjects, outfile)
+
+
+
+
+
+
+with open("subjects.json","r") as output:
+    subject_json = json.load(output)
+
+generatecourseduration(subject_json)
